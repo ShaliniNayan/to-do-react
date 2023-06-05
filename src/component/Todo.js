@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (todoText) => {
     setTodos((prevTodos) => [
@@ -27,6 +38,7 @@ const Todo = () => {
     if (event.key === 'Enter') {
       const updatedValue = event.target.value;
       addTodo(updatedValue);
+      // event.target.value = '';
     }
   };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const TodoItem = ({ todo, deleteTodo, toggleComplete }) => {
   const handleDelete = () => {
@@ -15,10 +17,10 @@ const TodoItem = ({ todo, deleteTodo, toggleComplete }) => {
       <span className="todo-text">{todo.text}</span>
       <div className="todo-actions">
         <button className="complete-btn" onClick={handleToggleComplete} type="button">
-          {todo.completed ? 'Undo' : 'Done'}
+          {todo.completed ? <FontAwesomeIcon icon={faCheck} /> : <span>&#x2714;</span>}
         </button>
         <button className="delete-btn" onClick={handleDelete} type="button">
-          Delete
+          <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
     </li>

@@ -7,7 +7,11 @@ const Todo = () => {
   const addTodo = (todoText) => {
     setTodos((prevTodos) => [
       ...prevTodos,
-      { id: Date.now().toString(), text: todoText, completed: false },
+      {
+        id: Date.now().toString(),
+        text: todoText,
+        completed: false,
+      },
     ]);
   };
 
